@@ -30,4 +30,9 @@ public class RestaurantService {
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
+
+    public Double getOrderValue(String restaurantName,List<String> items) throws restaurantNotFoundException {
+        Restaurant restaurant = findRestaurantByName(restaurantName);
+        return restaurant.findOrderValue(items);
+    }
 }
