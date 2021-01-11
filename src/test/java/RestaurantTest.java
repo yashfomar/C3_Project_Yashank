@@ -76,4 +76,28 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void finding_correct_total_sum_of_selected_items_for_restaurant_object() {
+        LocalTime openingTime = LocalTime.parse("10:30:00");
+        LocalTime closingTime = LocalTime.parse("22:00:00");
+        restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+
+
+        assertEquals(388,restaurant.findOrderValue(Arrays.asList("Sweet corn soup","Vegetable lasagne")));
+    }
+
+    @Test
+    public void finding_incorrect_total_sum_of_selected_items_for_restaurant_object() {
+        LocalTime openingTime = LocalTime.parse("10:30:00");
+        LocalTime closingTime = LocalTime.parse("22:00:00");
+        restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+
+
+        assertNotEquals(30,restaurant.findOrderValue(Arrays.asList("Sweet corn soup","Vegetable lasagne")));
+    }
 }
